@@ -1,0 +1,2 @@
+C:\Users\smullins2\Documents\GitHub\tak-ai\tak-ai\bin\Debug\tak-ai.exe.config
+C:\Users\smullins2\Documents\GitHub\tak-ai\tak-ai\bin\Debug\TakAI.exe.config
