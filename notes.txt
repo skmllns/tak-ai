@@ -1,0 +1,45 @@
+elements: board
+			-measurements
+			-store piece colors and positions
+				x, y, Stone
+		  pieces
+			flat
+			standing
+			
+			
+0-initialize board
+1-place initial piece on board
+	-color, position
+2a-move pieces
+	-validate moves
+		-actual physical location
+		-business logic
+	-change position
+	-add to list of items at new position
+	-return board
+2b-add pieces
+	-validate move
+	-add to list of items at new position
+	-return board
+-determine end game
+
+flat-can stack on top of, counts as road
+wall-can't be stack on top of, doesn't count as road
+
+
+'tak':
+	one move away from road
+end game:
+	road
+
+
+1) add or move piece
+2) analyze board state for tak
+3) act on that state
+
+board stores positions
+does piece store its position?
+
+visualizer
+
+is getting the position of a stone necessary?

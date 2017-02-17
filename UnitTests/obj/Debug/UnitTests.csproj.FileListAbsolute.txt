@@ -1,0 +1,8 @@
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\bin\Debug\TakAI.exe
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\bin\Debug\TakAI.pdb
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\smullins2\Documents\GitHub\tak-ai\UnitTests\obj\Debug\UnitTests.pdb

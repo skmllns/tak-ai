@@ -9,7 +9,7 @@ namespace TakAI.Services
             return board;
         }
 
-        public Board MovePiece(Board board, Piece piece, int x, int y)
+        public Board MovePiece(Board board, Stone stone, int x, int y)
         {
             return board;
         }
