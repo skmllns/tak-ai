@@ -42,4 +42,7 @@ does piece store its position?
 
 visualizer
 
+??
 is getting the position of a stone necessary?
+process notation
+how to target stone in move?

@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TakAI;
 using TakAI.Models;
+using TakAI.Services;
 
 namespace UnitTests
 {
@@ -94,6 +95,7 @@ namespace UnitTests
             string direction;
             //TODO: parse this into list
             string dropCounts;
+            Stack<int> dropStack = new Stack<int>();
             string stoneType;
 
             List<char> directionList = new List<char>{'>', '<', '+', '-'}; 
@@ -103,24 +105,33 @@ namespace UnitTests
             char maxAlpha = alphabet[sideLength - 1];
             int maxNum = sideLength;
             string turn = "3c4>12";
-
-
-
+            
             Regex moveStoneRegex = new Regex($"([0-9]*)([a-{maxAlpha}]{{1}}[1-{maxNum}]{{1}})([><+-]{{1}})([1-9]*)([FSC]*)");
             Assert.IsTrue(moveStoneRegex.IsMatch(turn));
             if (moveStoneRegex.IsMatch(turn))
             {
                 MatchCollection matches = moveStoneRegex.Matches(turn);
-                count = Int32.Parse(matches[0].Groups[1].ToString());
+                count = int.Parse(matches[0].Groups[1].ToString());
                 boardSquare = matches[0].Groups[2].ToString();
                 direction = matches[0].Groups[3].ToString();
                 dropCounts = matches[0].Groups[4].ToString();
+                foreach (char dropCount in dropCounts)
+                {
+                    dropStack.Push(int.Parse(dropCount.ToString()));
+                }
                 stoneType = matches[0].Groups[5].ToString();
             }
 
-            int p = 4;
         }
+        [TestMethod]
+        public void ParseTurnTest()
+        {
+            Board board = new Board(4);
+            string turn = "3c4>12";
+            TurnParser tp = new TurnParser();
+            tp.ParseTurn(board, turn);
 
+        }
 
     }
 
