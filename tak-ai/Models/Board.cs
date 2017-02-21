@@ -7,9 +7,9 @@ namespace TakAI.Models
         public Board(int length)
         {
             SideLength = length;
-            Positions = new Dictionary<string, List<Stone>>();
+            Positions = new Dictionary<string, Stack<Stone>>();
         }
         public int SideLength { get; set; }
-        public Dictionary<string, List<Stone>> Positions;
+        public Dictionary<string, Stack<Stone>> Positions;
     }
 }

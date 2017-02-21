@@ -10,7 +10,9 @@ namespace TakAI.Models
         public string MoveNotation;
         private string _targetStoneLocation;
         private Direction _moveDirection;
-        //TODO dropstack?
+        //TODO this seems redundant w/the dropstack
+        private int _stonesToMove;
+        //TODO dropstack
         private Stack<int> _dropStack;
     }
 }

@@ -7,13 +7,19 @@ namespace TakAI.Services
 {
     public class TurnParser
     {
-        public Dictionary<char, Direction> DirectionDict = new Dictionary<char, Direction>()
+        public Dictionary<string, Direction> DirectionDict = new Dictionary<string, Direction>()
         {
-         {'>', Direction.Right},
-         {'<', Direction.Left},
-         {'+', Direction.Up},
-         {'-', Direction.Down}
+         {">", Direction.Right},
+         {"<", Direction.Left},
+         {"+", Direction.Up},
+         {"-", Direction.Down}
         };
+
+        public void ParseFile()
+        {
+           
+
+        }
 
         //TODO this just returns an empty move, have to hook this up with collections of pieces
         public Move ParseTurn(Board board, string turn)
@@ -44,20 +50,20 @@ namespace TakAI.Services
             {
                 MatchCollection matches = moveStoneRegex.Matches(turn);
 
-                Stack<int> dropStack = new Stack<int>();
-
-                //TODO enum this
-                List<char> directionList = new List<char> { '>', '<', '+', '-' };
-
-                int count = int.Parse(matches[0].Groups[1].ToString());
                 boardSquare = matches[0].Groups[2].ToString();
-                string direction = matches[0].Groups[3].ToString();
+                //TODO this seems totally unnecessary
+                stoneType = matches[0].Groups[5].ToString();
+
+                Direction direction = DirectionDict[matches[0].Groups[3].ToString()];
+                Stack<int> dropStack = new Stack<int>();
+                int count = int.Parse(matches[0].Groups[1].ToString());
                 string dropCounts = matches[0].Groups[4].ToString();
+                
                 foreach (char dropCount in dropCounts)
                 {
                     dropStack.Push(int.Parse(dropCount.ToString()));
                 }
-                stoneType = matches[0].Groups[5].ToString();
+                
             }
             return move;
 

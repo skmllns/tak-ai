@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TakAI;
@@ -98,15 +100,16 @@ namespace UnitTests
             Stack<int> dropStack = new Stack<int>();
             string stoneType;
 
-            List<char> directionList = new List<char>{'>', '<', '+', '-'}; 
+            List<char> directionList = new List<char> {'>', '<', '+', '-'};
             Board board = new Board(4);
-            char[] alphabet = Enumerable.Range(97, 26).Select(x => (char)x).ToArray();
+            char[] alphabet = Enumerable.Range(97, 26).Select(x => (char) x).ToArray();
             int sideLength = board.SideLength;
             char maxAlpha = alphabet[sideLength - 1];
             int maxNum = sideLength;
             string turn = "3c4>12";
-            
-            Regex moveStoneRegex = new Regex($"([0-9]*)([a-{maxAlpha}]{{1}}[1-{maxNum}]{{1}})([><+-]{{1}})([1-9]*)([FSC]*)");
+
+            Regex moveStoneRegex =
+                new Regex($"([0-9]*)([a-{maxAlpha}]{{1}}[1-{maxNum}]{{1}})([><+-]{{1}})([1-9]*)([FSC]*)");
             Assert.IsTrue(moveStoneRegex.IsMatch(turn));
             if (moveStoneRegex.IsMatch(turn))
             {
@@ -123,6 +126,7 @@ namespace UnitTests
             }
 
         }
+
         [TestMethod]
         public void ParseTurnTest()
         {
@@ -130,6 +134,41 @@ namespace UnitTests
             string turn = "3c4>12";
             TurnParser tp = new TurnParser();
             tp.ParseTurn(board, turn);
+
+        }
+
+        [TestMethod]
+        public void FileReadTest()
+        {
+            string ptnFile = string.Join(@"\n", File.ReadAllLines(
+                @"C:\Users\smullins2\Documents\GitHub\tak-ai\tak-ai\ReferenceFiles\Test.ptn",
+                Encoding.Default));
+
+            string date;
+            string playerOne;
+            string playerTwo;
+            int boardSize;
+            string gameResult;
+            string movesString;
+            Regex dateRegex = new Regex(@"(?<=Date "").*?(?="")");
+            Regex playerOneRegex = new Regex(@"(?<=Player1 "").*?(?="")");
+            Regex playerTwoRegex = new Regex(@"(?<=Player2 "").*?(?="")");
+            Regex boardSizeRegex = new Regex(@"(?<=Size "").*?(?="")");
+            Regex gameResultRegex = new Regex(@"(?<=Result "").*?(?="")");
+            Regex movesRegex = new Regex(@"(?<=1\.).*? (?=[RF(1/)])");
+
+            //TODO null handling w/poorly formed PTN file
+            date = dateRegex.Matches(ptnFile)[0].Groups[0].ToString();
+            playerOne = playerOneRegex.Matches(ptnFile)[0].Groups[0].ToString();
+            playerTwo = playerTwoRegex.Matches(ptnFile)[0].Groups[0].ToString();
+            boardSize = int.Parse(boardSizeRegex.Matches(ptnFile)[0].Groups[0].ToString());
+            gameResult = gameResultRegex.Matches(ptnFile)[0].Groups[0].ToString();
+            movesString = movesRegex.Matches(ptnFile)[0].Groups[0].ToString();
+
+            List<string> movesList = Regex.Split(movesString, @"\n").ToList();
+
+
+            int x = 4;
 
         }
 
