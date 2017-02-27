@@ -46,3 +46,9 @@ visualizer
 is getting the position of a stone necessary?
 process notation
 how to target stone in move?
+
+ways to play:
+	-interactive
+	-from file
+
+need to add unplayed pieces, depending on the size of the board

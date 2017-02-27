@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{81A27F13-57E6-4549-AABC-0D6130565434}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TakAI</RootNamespace>
     <AssemblyName>TakAI</AssemblyName>
@@ -57,7 +57,10 @@
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\CapStone.cs" />
     <Compile Include="Models\FlatStone.cs" />
-    <Compile Include="Models\Move.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Turn.cs" />
+    <Compile Include="Models\MoveTurn.cs" />
+    <Compile Include="Models\PlaceTurn.cs" />
     <Compile Include="Models\StandingStone.cs" />
     <Compile Include="Models\Stone.cs" />
     <Compile Include="Program.cs" />
